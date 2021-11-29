@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title>Ch Jewellery</title>
+  <link rel="preload" href="fonts/poppins-regular.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/poppins-medium.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/poppins-bold.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/cormorant-garamond-semi-bold.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/cormorant-garamond-bold.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/cormorant-garamond-bold-italic.woff2" as="font" crossorigin="">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body class="page-body">
+  <header class="page-header page-header--nojs">
+      <div class="page-header__top-container">
+        <button class="page-header__button-menu" type="button" aria-label="open the menu">
+          <svg width="25" height="18" viewBox="0 0 25 18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="img/sprite_auto.svg#menu"></use>
+          </svg>
+        </button>
+        <form class="page-header__search search search--nojs" method="get" action="#">
+          <button type="submit" aria-label="site search" class="search__button">
+            <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+              <use xlink:href="img/sprite_auto.svg#search"></use>
+            </svg>
+          </button>
+          <label class="visually-hidden" for="search">Type here to search</label>
+          <input type="text" id="search" name="search" placeholder="Type here to search">
+        </form>
+        <a class="page-header__logo">
+          <svg width="66" height="66" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="img/sprite_auto.svg#logo"></use>
+          </svg>
+        </a>
+        <ul class="page-header__user-menu">
+          <li class="page-header__login-top">
+            <a href="login.html">Login</a>
+          </li>
+          <li class="page-header__cart">
+            <a href="#">
+              <svg width="20" height="18" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#cart"></use>
+              </svg>
+              <span>Cart</span> <span>0</span></a>
+          </li>
+        </ul>
+      </div>
+      <nav class="page-header__navigation main-navigation main-navigation--nojs main-navigation--closed">
+        <ul class="main-navigation__menu">
+          <li>
+            <a href="#">What’s new</a>
+          </li>
+          <li>
+            <a href="#">Chokers</a>
+          </li>
+          <li>
+            <a href="#">Necklaces</a>
+          </li>
+          <li>
+            <a href="#">Rings</a>
+          </li>
+          <li>
+            <a href="#">Earrings</a>
+          </li>
+        </ul>
+        <ul class="main-navigation__about-company">
+          <li>
+            <a href="#">About CH</a>
+          </li>
+          <li>
+            <a href="#">Stores & Hours</a>
+          </li>
+          <li>
+            <a href="#">Contact Us</a>
+          </li>
+        </ul>
+        <a class="main-navigation__login" href="login.html">Login</a>
+      </nav>
+    </header>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

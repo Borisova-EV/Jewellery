@@ -1,0 +1,22 @@
+//colours
+$black: #1d1613;
+$basic-black: #000000;
+$white: #ffffff;
+$brown: #a87b62;
+$grey: #9b9997;
+$black-rgb: rgb(0, 0, 0);
+$light-grey: #f6f5f4;
+
+// Viewport
+$tablet-max-width: 1023px;
+$mobile-max-width: 767px;
+$desktop-min-width: 1024px;
+
+//mixin
+@mixin cormorant {
+  font-family: "Cormorant Garamond", "Century Schoolbook L", "Georgia", serif;
+}
+
+@mixin poppins {
+  font-family: "Poppins", "Nimbus Sans L", "Helvetica", "Arial", sans-serif;
+}
