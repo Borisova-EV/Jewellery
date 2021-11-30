@@ -50,6 +50,7 @@
 }
 
 .page-header__top-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 0 auto 50px;
@@ -185,9 +186,13 @@
   top: 30px;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 0 auto;
   width: 66px;
   height: 66px;
+
+  @media (max-width: $tablet-max-width) {
+    top: 0;
+  }
 
   @media (max-width: $mobile-max-width) {
     top: 20px;

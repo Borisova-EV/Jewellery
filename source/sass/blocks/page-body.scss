@@ -7,13 +7,6 @@
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
 
-
-  &--opened-menu {
-    @media (max-width: $tablet-max-width) {
-      background-color: $brown;
-    }
-  }
-
   &--opened-modal {
     overflow: hidden;
 

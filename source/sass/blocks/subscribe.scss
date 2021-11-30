@@ -1,0 +1,59 @@
+.subscribe {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $white;
+
+  input {
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    border-style: none;
+    background-color: transparent;
+
+    &::-webkit-input-placeholder {
+      color: $grey;
+    }
+
+    &::-moz-placeholder {
+      color: $grey;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: 3px solid $brown;
+    }
+  }
+}
+
+.subscribe__button {
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+  font: inherit;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    color: $brown;
+  }
+
+  &:active {
+    color: inherit;
+    opacity: 0.5;
+  }
+
+  span {
+    margin-right: 7px;
+  }
+
+  svg {
+    width: 30px;
+    height: 11px;
+    stroke: currentColor;
+    transform: rotate(180deg);
+  }
+}

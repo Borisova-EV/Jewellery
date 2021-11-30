@@ -1,0 +1,35 @@
+.social {
+
+  @media (max-width: $mobile-max-width) {
+    display: flex;
+  }
+
+  svg {
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+
+    @media (max-width: $mobile-max-width) {
+      margin-right: 30px;
+      width: 20px;
+      height: 21px;
+    }
+  }
+
+  span {
+    @media (max-width: $mobile-max-width) {
+      display: none;
+    }
+  }
+}
+
+.social__item {
+  &--facebook {
+    svg {
+      @media (max-width: $mobile-max-width) {
+        width: 12px;
+      }
+    }
+  }
+}
