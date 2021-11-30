@@ -1,0 +1,67 @@
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 463px;
+  background-image: url("../img/intro/intro-desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include cormorant;
+  color: $white;
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/intro/intro-desktop@2x.jpg");
+  }
+
+  @media (max-width: $tablet-max-width) {
+    background-image: url("../img/intro/intro-tablet.jpg");
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro-tablet@2x.jpg");
+    }
+  }
+
+  @media (max-width: $mobile-max-width) {
+    background-image: url("../img/intro/intro-mobile.jpg");
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro-mobile@2x.jpg");
+    }
+  }
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 58px;
+    text-transform: uppercase;
+
+    @media (max-width: $tablet-max-width) {
+      padding-top: 4px;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      padding-top: 10px;
+      font-size: 38px;
+      line-height: 49px;
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 38px;
+    line-height: 49px;
+    font-style: italic;
+    text-transform: none;
+    font-weight: normal;
+    text-align: center;
+
+    @media (max-width: $mobile-max-width) {
+      font-size: 34px;
+      line-height: 44px;
+      margin-bottom: 5px;
+    }
+
+  }
+}
