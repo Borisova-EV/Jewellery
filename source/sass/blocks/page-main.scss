@@ -1,0 +1,46 @@
+.page-main__section-full {
+  margin-bottom: 120px;
+
+  @media (max-width: $tablet-max-width) {
+    margin-bottom: 70px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 62px;
+  }
+}
+
+.page-main__section {
+  margin: 0 auto;
+  padding-right: 98px;
+  padding-left: 98px;
+  width: 100%;
+  max-width: 1366px;
+  color: $black;
+
+  @media (max-width: $tablet-max-width) {
+    padding-right: 45px;
+    padding-left: 45px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h2 {
+    @include cormorant;
+    font-size: 34px;
+    line-height: 130%;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 0;
+  }
+}
+
+.page-main__container {
+  position: relative;
+}
