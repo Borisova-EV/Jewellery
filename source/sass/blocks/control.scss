@@ -1,0 +1,14 @@
+.control {
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.2;
+  }
+
+  &--nojs {
+    display: none;
+  }
+}
