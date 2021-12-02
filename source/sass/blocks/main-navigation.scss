@@ -56,7 +56,7 @@
 
   .main-navigation--closed & {
     @media (max-width: $tablet-max-width) {
-      display: none
+      display: none;
     }
   }
 
@@ -95,7 +95,7 @@
 
 .main-navigation__about-company,
 .main-navigation__login {
-  display: none
+  display: none;
 }
 
 .main-navigation__about-company {

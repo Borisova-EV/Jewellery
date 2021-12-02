@@ -21,7 +21,6 @@
       width: 130px;
       height: 136px;
     }
-
   }
 
   h3 {
@@ -43,19 +42,19 @@
   }
 
   a {
-  color: inherit;
+    color: inherit;
 
-  &:visited {
-    color:inherit;
-  }
+    &:visited {
+      color: inherit;
+    }
 
-  &:hover {
-    opacity: 0.5;
-    color: rgba($black-rgb, 0.5);
-  }
+    &:hover {
+      opacity: 0.5;
+      color: rgba($black-rgb, 0.5);
+    }
 
-  &:active {
-    opacity: 0.2;
-  }
+    &:active {
+      opacity: 0.2;
+    }
   }
 }
