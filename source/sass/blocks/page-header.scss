@@ -1,5 +1,5 @@
 .page-header {
-  margin-bottom: 8px;
+  margin-bottom: 11px;
 
   @include poppins;
   color: $black;
@@ -64,7 +64,6 @@
 
   font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
 
   @media (max-width: $tablet-max-width) {
     display: grid;

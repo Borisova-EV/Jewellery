@@ -1,17 +1,17 @@
 .page-main__section-full {
-  margin-bottom: 120px;
+  margin-bottom: 132px;
 
   @media (max-width: $tablet-max-width) {
-    margin-bottom: 70px;
+    margin-bottom: 82px;
   }
 
   @media (max-width: $mobile-max-width) {
-    margin-bottom: 62px;
+    margin-bottom: 74px;
   }
 }
 
 .page-main__section {
-  margin: 0 auto;
+  margin: 0 auto 124px;
   padding-right: 98px;
   padding-left: 98px;
   width: 100%;
@@ -19,11 +19,13 @@
   color: $black;
 
   @media (max-width: $tablet-max-width) {
+    margin-bottom: 73px;
     padding-right: 45px;
     padding-left: 45px;
   }
 
   @media (max-width: $mobile-max-width) {
+    margin-bottom: 67px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -31,7 +33,6 @@
   h2 {
     @include cormorant;
     font-size: 34px;
-    line-height: 130%;
     text-align: center;
   }
 

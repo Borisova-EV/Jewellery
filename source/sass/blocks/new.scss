@@ -1,10 +1,10 @@
 .new {
   h2 {
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 36px;
 
     @media (max-width: $tablet-max-width) {
-      margin-bottom: 20px;
+      margin-bottom: 31px;
     }
   }
 }
@@ -23,7 +23,7 @@
 
 .new__control {
   position: absolute;
-  top: 42px;
+  top: 30px;
 
   @media (max-width: $mobile-max-width) {
     display: none;
@@ -65,7 +65,7 @@
 }
 
 .new__catalog {
-  margin-bottom: 54px;
+  margin-bottom: 52px;
 
   @media (max-width: $tablet-max-width) {
     margin: 0 auto 42px;

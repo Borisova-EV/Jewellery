@@ -2,7 +2,6 @@
   @include poppins;
   font-weight: 500;
   font-size: 16px;
-  line-height: 130%;
 
   ul {
     display: flex;
@@ -10,10 +9,6 @@
     @media (max-width: $mobile-max-width) {
       display: none;
     }
-  }
-
-  li:not(:last-child) {
-    margin-right: 15px;
   }
 
   p {
