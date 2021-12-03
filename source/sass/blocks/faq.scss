@@ -1,0 +1,66 @@
+.faq {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 60px;
+
+    @media (max-width: $mobile-max-width) {
+      margin-bottom: 28px;
+    }
+  }
+
+  ul {
+    margin: 0 auto;
+    padding-left: 0;
+    width: 83%;
+
+    @media (max-width: $tablet-max-width) {
+      width: 100%;
+    }
+  }
+
+  li {
+    padding-bottom: 45px;
+
+    @media (max-width: $mobile-max-width) {
+      padding-bottom: 18px;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 43px 43px 0;
+
+    @media (max-width: $tablet-max-width) {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      padding-top: 17px;
+      padding-left: 25px;
+      padding-right: 54px;
+    }
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 12px;
+    padding-left: 48px;
+    padding-right: 48px;
+    width: 62%;
+
+    @media (max-width: $tablet-max-width) {
+      padding-top: 28px;
+      width: 93%;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      padding-top: 11px;
+      padding-left: 24px;
+      padding-right: 59px;
+      width: 100%;
+    }
+  }
+}

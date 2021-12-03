@@ -150,6 +150,53 @@
   }
   createPagination();
   scrollSlider();
-  window.addEventListener('resize', () => scrollSlider());
+  window.addEventListener('resize', function () {
+    slider.style.marginLeft = 0;
+    scrollSlider()
+  }
+  );
+})();
 
+(function () {
+  const accordion = document.querySelector('.accordion');
+  const accordionTitles = accordion.querySelectorAll('.accordion__title');
+  const accordionContents = accordion.querySelectorAll('.accordion__content');
+
+  const ACCORDION_HIDDEN_CLASS = 'accordion__content--hidden';
+  const ACCORDION_CURRENT_TITLE_CLASS = 'accordion__title--current';
+
+  function closeAccordionContent() {
+    accordionContents.forEach(function (elem) {
+      elem.classList.add(ACCORDION_HIDDEN_CLASS);
+    })
+  }
+
+  function changeAccordionTitle(currentTitle) {
+    accordionTitles.forEach(function (title) {
+      if (title !== currentTitle) {
+        title.classList.remove(ACCORDION_CURRENT_TITLE_CLASS);
+      }
+    })
+  }
+
+  function openAccordion() {
+    closeAccordionContent();
+    accordionTitles.forEach(function (title) {
+      title.addEventListener('click', function () {
+        console.log(this);
+        changeAccordionTitle(this);
+        this.classList.toggle(ACCORDION_CURRENT_TITLE_CLASS);
+        const content = this.nextElementSibling;
+        accordionContents.forEach(function (elem) {
+          if (elem === content) {
+            elem.classList.toggle(ACCORDION_HIDDEN_CLASS);
+          } else {
+            elem.classList.add(ACCORDION_HIDDEN_CLASS);
+          }
+        })
+      })
+    })
+  }
+
+  openAccordion();
 })()
