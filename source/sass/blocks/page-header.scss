@@ -26,10 +26,6 @@
     }
   }
 
-  &--nojs {
-    background-color: $brown;
-  }
-
   ul {
     list-style: none;
   }
@@ -179,8 +175,6 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 66px;
-  height: 66px;
 
   @media (max-width: $tablet-max-width) {
     top: 0;
@@ -188,8 +182,6 @@
 
   @media (max-width: $mobile-max-width) {
     top: 7px;
-    width: 52px;
-    height: 52px;
   }
 
   .page-header--opened-menu & {

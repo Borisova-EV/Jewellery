@@ -112,7 +112,7 @@
         counter = this.textContent - 1;
         sliderCards.forEach((elem) => elem.classList.add('card-product--hidden'));
         showCardSlider()
-          changeStatusButton();
+        changeStatusButton();
       })
     }
   }
@@ -196,4 +196,84 @@
   }
 
   openAccordion();
+})();
+
+(function () {
+  const page = document.body;
+  const loginButtons = document.querySelectorAll('.login');
+  const loginTemplate = document.querySelector('#login').content.querySelector('.modal');
+  const loginModal = loginTemplate.cloneNode(true);
+  const closeLoginModalButton = loginModal.querySelector('.modal__close');
+  const focusableElements = loginModal.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+  const emailInput = loginModal.querySelector('input[type=email]');
+
+  const CLASS_PAGE_OPENED_POPUP = 'page-body--opened-modal';
+
+  function closeLoginModal() {
+    page.removeChild(loginModal);
+    page.classList.remove(CLASS_PAGE_OPENED_POPUP);
+
+    document.removeEventListener('keydown', onDocumentKeydown);
+    document.removeEventListener('click', onDocumentClick);
+    closeLoginModalButton.removeEventListener('click', onCloseLoginModalButtonClick);
+  }
+
+  const onDocumentKeydown = function (evt) {
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
+      evt.preventDefault();
+      closeLoginModal();
+    }
+  };
+
+  const onDocumentClick = function (evt) {
+    loginButtons.forEach(function (button) {
+      console.log(evt.target !== button);
+      if (evt.target !== loginModal && !evt.target.classList.contains('login') && !loginModal.contains(evt.target)) {
+        closeLoginModal();
+      }
+    })
+  };
+
+  const onCloseLoginModalButtonClick = function () {
+    closeLoginModal();
+  }
+
+  function trapFocus() {
+    loginModal.addEventListener('keydown', function (evt) {
+      if (evt.key === 'Tab') {
+        if (evt.shiftKey) {
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            evt.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus();
+            evt.preventDefault();
+          }
+        }
+      }
+    })
+  }
+
+  function openLoginModal() {
+    loginButtons.forEach(function (button) {
+      button.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        page.prepend(loginModal);
+
+        page.classList.add('page-body--opened-modal');
+        emailInput.focus();
+        trapFocus()
+
+        document.addEventListener('keydown', onDocumentKeydown);
+        document.addEventListener('click', onDocumentClick);
+        closeLoginModalButton.addEventListener('click', onCloseLoginModalButtonClick);
+      })
+    })
+  }
+
+  openLoginModal();
 })()

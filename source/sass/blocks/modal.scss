@@ -1,0 +1,163 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 430px;
+  height: 586px;
+  background-color: $beige;
+  z-index: 20;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 138px;
+    background-image: url("../img/intro/intro-login.jpg");
+    background-repeat: no-repeat;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro-login@2x.jpg");
+    }
+  }
+
+  &--page {
+    position: static;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+
+    &::before {
+      width: 430px;
+      margin: 0 auto;
+    }
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 14px;
+  height: 14px;
+  border-style: none;
+  background-color: transparent;
+  background-image: url("../img/icon/close.svg");
+}
+
+.modal__form {
+  padding-left: 45px;
+  padding-right: 45px;
+
+  .modal--page & {
+    margin: 0 auto;
+    padding-right: 98px;
+    padding-left: 98px;
+    width: 100%;
+    max-width: 1366px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+
+    @media (max-width: $tablet-max-width) {
+      display: block;
+    }
+  }
+}
+
+.modal__input-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  a {
+    display: block;
+    width: max-content;
+    align-self: flex-end;
+    text-align: end;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: inherit;
+    color: $grey;
+
+    &:visited {
+      color: $grey;
+    }
+
+    &:hover {
+      color: $black;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+
+.modal__submit {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 68px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: $white;
+  background-color: $brown;
+  border-style: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $beige;
+    border: 1px solid $brown;
+    color: $brown;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  .modal--page & {
+    width: 500px;
+    margin: 0 auto 30px;
+    grid-column: 1/-1;
+  }
+}
+
+.modal__footer {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: $grey;
+
+  span {
+    margin-right: 5px;
+  }
+
+  a {
+    font: inherit;
+    color: $black;
+
+    &:visited {
+      color: $black;
+    }
+
+    &:hover {
+      color: $grey;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  .modal--page & {
+    grid-column: 1/-1;
+  }
+}

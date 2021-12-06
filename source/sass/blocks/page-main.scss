@@ -81,20 +81,7 @@
   }
 
   h2 {
-    @include cormorant;
-    font-size: 34px;
     text-align: center;
-    letter-spacing: 0.03em;
-    line-height: 130%;
-
-    span {
-      font-size: 42px;
-    }
-  }
-
-  ul {
-    list-style: none;
-    margin-top: 0;
   }
 }
 

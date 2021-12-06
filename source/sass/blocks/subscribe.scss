@@ -1,36 +1,7 @@
-.subscribe {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid $white;
-
-  input {
-    padding: 0;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 130%;
-    border-style: none;
-    color: $white;
-    background-color: transparent;
-
-    &::-webkit-input-placeholder {
-      color: $grey;
-    }
-
-    &::-moz-placeholder {
-      color: $grey;
-    }
-
-    &:hover {
-      opacity: 0.5;
-    }
-
-    &:focus {
-      outline: 3px solid $brown;
-    }
-  }
-}
-
-.subscribe__button {
+.subscribe__submit {
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 0;
   border-style: none;
   background-color: transparent;

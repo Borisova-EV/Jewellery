@@ -1,0 +1,40 @@
+.form {
+  position: relative;
+
+  @include poppins;
+
+  input {
+    padding: 0;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+    border-style: none;
+    border-bottom: 1px solid $white;
+    color: $white;
+    background-color: transparent;
+
+    &::-webkit-input-placeholder {
+      color: $grey;
+    }
+
+    &::-moz-placeholder {
+      color: $grey;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: 3px solid $brown;
+    }
+  }
+
+  &--black {
+    input {
+      border-color: $black;
+      color: $black;
+    }
+  }
+}
