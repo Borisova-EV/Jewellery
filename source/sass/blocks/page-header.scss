@@ -1,11 +1,11 @@
 .page-header {
-  margin-bottom: 11px;
+  margin-bottom: 9px;
 
   @include poppins;
   color: $black;
 
   @media (max-width: $tablet-max-width) {
-    margin: 0 auto 35px;
+    margin: 0 auto 31px;
     padding-left: 45px;
     padding-right: 45px;
     padding-top: 30px;
@@ -14,7 +14,7 @@
   }
 
   @media (max-width: $mobile-max-width) {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 13px;
@@ -64,6 +64,7 @@
 
   font-weight: 500;
   font-size: 14px;
+  line-height: 130%;
 
   @media (max-width: $tablet-max-width) {
     display: grid;

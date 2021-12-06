@@ -7,7 +7,9 @@
     padding: 0;
     font-weight: 500;
     font-size: 14px;
+    line-height: 130%;
     border-style: none;
+    color: $white;
     background-color: transparent;
 
     &::-webkit-input-placeholder {

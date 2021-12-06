@@ -36,12 +36,10 @@
   let smallDevice = window.matchMedia("(max-width: 1023px)");
 
   let counter = 0;
-  let position = 0;
 
-  const GAP_CARDS = 30;
-  const ALMOST = smallDevice.matches ? 2 : 4;
+  const AMOUNT = smallDevice.matches ? 2 : 4;
 
-  const almostPages = Math.floor(sliderCards.length / ALMOST);
+  const amountPages = Math.floor(sliderCards.length / AMOUNT);
 
   function disableButton(button, value) {
     button.disabled = value;
@@ -51,7 +49,7 @@
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
       disableButton(sliderButtonNext, false);
-    } else if (counter > 0 && counter < (almostPages - 1)) {
+    } else if (counter > 0 && counter < (amountPages - 1)) {
       disableButton(sliderButtonNext, false);
       disableButton(sliderButtonPrev, false)
     } else {
@@ -64,18 +62,23 @@
     pages[counter].classList.add('pagination__item--current');
   }
 
+  function showCardSlider() {
+    sliderCards.forEach((elem) => elem.classList.add('card-product--hidden'));
+    for (let i = AMOUNT * counter; i < (AMOUNT * counter + AMOUNT); i++) {
+      sliderCards[i].classList.remove('card-product--hidden');
+    }
+  }
   const onSliderButtonPrevClick = function () {
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
     } else {
       counter--;
-      position += (slider.offsetWidth + GAP_CARDS);
-      slider.style.marginLeft = position + 'px';
+      showCardSlider()
 
       const previousIndex = counter + 1;
       changeCurrentPage(previousIndex);
 
-      if (counter < (almostPages - 1)) {
+      if (counter < (amountPages - 1)) {
         disableButton(sliderButtonNext, false);
         disableButton(sliderButtonPrev, false);
       }
@@ -84,8 +87,7 @@
 
   const onSliderButtonNextClick = function () {
     counter++;
-    position -= (slider.offsetWidth + GAP_CARDS);
-    slider.style.marginLeft = position + 'px';
+    showCardSlider()
     if (counter > 0) {
       disableButton(sliderButtonPrev, false);
     }
@@ -93,7 +95,7 @@
     const previousIndex = counter - 1;
     changeCurrentPage(previousIndex);
 
-    if (counter >= (almostPages - 1)) {
+    if (counter >= (amountPages - 1)) {
       disableButton(sliderButtonNext, true);
     }
   }
@@ -108,9 +110,9 @@
         }
         this.classList.add('pagination__item--current');
         counter = this.textContent - 1;
-        position = -(slider.offsetWidth + GAP_CARDS) * counter;
-        slider.style.marginLeft = position + 'px';
-        changeStatusButton();
+        sliderCards.forEach((elem) => elem.classList.add('card-product--hidden'));
+        showCardSlider()
+          changeStatusButton();
       })
     }
   }
@@ -118,7 +120,7 @@
 
   function createPagination() {
     const paginationFragment = document.createDocumentFragment();
-    for (let i = 1; i <= almostPages; i++) {
+    for (let i = 1; i <= amountPages; i++) {
       const paginationTemplate = document.querySelector('#pagination').content.querySelector('li');
       const paginationElement = paginationTemplate.cloneNode(true);
       const buttonPage = paginationElement.querySelector('button');
@@ -131,14 +133,14 @@
   function scrollSlider() {
     sliderButtonPrev.classList.remove('control--nojs');
     sliderButtonNext.classList.remove('control--nojs');
-    slider.classList.remove('slider__list--nojs');
+    showCardSlider()
     pages[0].classList.add('pagination__item--current');
 
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
     }
 
-    if (sliderCards.length <= ALMOST) {
+    if (sliderCards.length <= AMOUNT) {
       disableButton(sliderButtonPrev, true);
       disableButton(sliderButtonNext, true);
     } else {
@@ -150,11 +152,6 @@
   }
   createPagination();
   scrollSlider();
-  window.addEventListener('resize', function () {
-    slider.style.marginLeft = 0;
-    scrollSlider()
-  }
-  );
 })();
 
 (function () {

@@ -5,6 +5,11 @@
 
   li {
     position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($black-rgb, 0.05);
+    }
 
     &:not(:last-child) {
       border-bottom: 1px solid $brown;
@@ -49,8 +54,11 @@
 }
 
 .accordion__content {
+  line-height: 130%;
+
   @media (max-width: $mobile-max-width) {
     font-size: 14px;
+    line-height: 144%;
   }
 
   &--hidden {

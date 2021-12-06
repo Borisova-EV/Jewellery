@@ -1,10 +1,7 @@
 .intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 11px;
+  padding-top: 181px;
   min-height: 463px;
+  text-align: center;
   background-image: url("../img/intro/intro-desktop.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,7 +14,6 @@
   }
 
   @media (max-width: $tablet-max-width) {
-    padding-top: 0;
     background-image: url("../img/intro/intro-tablet.jpg");
 
     @media (min-resolution: 2dppx) {
@@ -35,17 +31,18 @@
 
   p {
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 0;
     font-weight: bold;
     font-size: 45px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
 
     @media (max-width: $tablet-max-width) {
-      padding-top: 4px;
+      padding-right: 17px;
     }
 
     @media (max-width: $mobile-max-width) {
+      padding-right: 0;
       padding-top: 10px;
       font-size: 38px;
     }
@@ -55,12 +52,15 @@
     display: block;
     font-size: 38px;
     font-style: italic;
-    font-weight: normal;
     text-align: center;
 
+    @media (max-width: $tablet-max-width) {
+      padding-right: 17px;
+    }
+
     @media (max-width: $mobile-max-width) {
+      padding-right: 0;
       font-size: 34px;
-      margin-bottom: 5px;
     }
   }
 }

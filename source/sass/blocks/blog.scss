@@ -1,13 +1,13 @@
 .blog {
   h2 {
     margin-top: 0;
-    margin-bottom: 31px;
+    margin-bottom: 20px;
   }
 
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 30px;
+    column-gap: 2.56%;
     row-gap: 30px;
     padding-left: 0;
 
@@ -37,6 +37,10 @@
 
 .blog__link {
   margin: 0 auto 64px;
+
+  @media (max-width: $tablet-max-width) {
+    margin-bottom: 62px;
+  }
 
   @media (max-width: $mobile-max-width) {
     margin-bottom: 53px;

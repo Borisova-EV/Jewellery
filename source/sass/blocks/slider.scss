@@ -12,24 +12,12 @@
 }
 
 .slider__list {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
 
-  &--nojs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 30px;
-    row-gap: 30px;
-
-    @media (max-width: $tablet-max-width) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  li {
-    flex: 1 0 auto;
-    margin-right: 30px;
+  @media (max-width: $tablet-max-width) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
