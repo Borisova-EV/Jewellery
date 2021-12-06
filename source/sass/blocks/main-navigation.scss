@@ -121,6 +121,8 @@
 }
 
 .main-navigation__login {
+  width: max-content;
+
   .main-navigation--opened &,
   .main-navigation--nojs & {
     @media (max-width: $tablet-max-width) {

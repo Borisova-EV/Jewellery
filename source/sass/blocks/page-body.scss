@@ -5,6 +5,10 @@
   min-height: 100%;
   text-size-adjust: none;
 
+  &--opened-menu {
+    overflow: hidden;
+  }
+
   &--opened-modal {
     overflow: hidden;
 
@@ -16,7 +20,7 @@
       width: 100%;
       height: 100%;
       background-color: rgba($black-rgb, 0.5);
-      z-index: 5;
+      z-index: 80;
     }
   }
 

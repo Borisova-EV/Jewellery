@@ -260,6 +260,7 @@
 
   function openLoginModal() {
     loginButtons.forEach(function (button) {
+      console.log(login)
       button.addEventListener('click', function (evt) {
         evt.preventDefault();
         page.prepend(loginModal);

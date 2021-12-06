@@ -1,4 +1,6 @@
 .page-login {
+  padding-top: 50px;
+  padding-bottom: 20px;
   background-color: $beige;
   width: 100%;
   height: 100%;
@@ -14,6 +16,4 @@
   display: flex;
   flex-direction: column;
   align-self: start;
-  padding-top: 50px;
-  padding-bottom: 50px;
 }

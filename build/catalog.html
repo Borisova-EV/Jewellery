@@ -1,22 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <title>Ch Catalog</title>
-  <link rel="preload" href="fonts/poppins-regular.woff2" as="font" crossorigin="">
-  <link rel="preload" href="fonts/poppins-medium.woff2" as="font" crossorigin="">
-  <link rel="preload" href="fonts/poppins-bold.woff2" as="font" crossorigin="">
-  <link rel="preload" href="fonts/cormorant-garamond-semi-bold.woff2" as="font" crossorigin="">
-  <link rel="preload" href="fonts/cormorant-garamond-bold.woff2" as="font" crossorigin="">
-  <link rel="preload" href="fonts/cormorant-garamond-bold-italic.woff2" as="font" crossorigin="">
-  <link rel="stylesheet" href="css/style.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Catalog Ch Jewellery</title>
+    <link rel="preload" href="fonts/poppins-regular.woff2" as="font" crossorigin="">
+    <link rel="preload" href="fonts/poppins-medium.woff2" as="font" crossorigin="">
+    <link rel="preload" href="fonts/poppins-bold.woff2" as="font" crossorigin="">
+    <link rel="preload" href="fonts/cormorant-garamond-semi-bold.woff2" as="font" crossorigin="">
+    <link rel="preload" href="fonts/cormorant-garamond-bold.woff2" as="font" crossorigin="">
+    <link rel="preload" href="fonts/cormorant-garamond-bold-italic.woff2" as="font" crossorigin="">
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
 
-<body>
+  <body class="page-body">
+    <header class="page-header page-header--nojs">
+      <div class="page-header__top-container">
+        <button class="page-header__button-menu" type="button" aria-label="open the menu">
+          <svg width="25" height="18" viewBox="0 0 25 18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="img/sprite_auto.svg#menu"></use>
+          </svg>
+        </button>
+        <form class="page-header__search search search--nojs" method="get" action="#">
+          <button type="submit" aria-label="site search" class="search__button">
+            <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+              <use xlink:href="img/sprite_auto.svg#search"></use>
+            </svg>
+          </button>
+          <label class="visually-hidden" for="search">Type here to search</label>
+          <input type="text" id="search" name="search" placeholder="Type here to search">
+        </form>
+        <a class="page-header__logo logo">
+          <svg width="66" height="66" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="img/sprite_auto.svg#logo"></use>
+          </svg>
+        </a>
+        <ul class="page-header__user-menu">
+          <li class="page-header__login-top">
+            <a class="login" href="login.html">Login</a>
+          </li>
+          <li class="page-header__cart">
+            <a href="#">
+              <svg width="20" height="18" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#cart"></use>
+              </svg>
+              <span>Cart</span> <span>0</span></a>
+          </li>
+        </ul>
+      </div>
+      <nav class="page-header__navigation main-navigation main-navigation--nojs main-navigation--closed">
+        <ul class="main-navigation__menu">
+          <li>
+            <a href="#">What’s new</a>
+          </li>
+          <li>
+            <a href="#">Chokers</a>
+          </li>
+          <li>
+            <a href="#">Necklaces</a>
+          </li>
+          <li>
+            <a href="#">Rings</a>
+          </li>
+          <li>
+            <a href="#">Earrings</a>
+          </li>
+        </ul>
+        <ul class="main-navigation__about-company">
+          <li>
+            <a href="#">About CH</a>
+          </li>
+          <li>
+            <a href="#">Stores & Hours</a>
+          </li>
+          <li>
+            <a href="#">Contact Us</a>
+          </li>
+        </ul>
+        <a class="main-navigation__login login" href="login.html">Login</a>
+      </nav>
+    </header>
+    <main class="page-main">
+      <h1 class="visually-hidden">Catalog Jewellery</h1>
+      <section class="page-main__section-full intro-catalog">
+        <h2 class="visually-hidden">The slogan of our company</h2>
+        <p>ALL JEWELLERY</p>
+        <span>Discover picks of fashion's finest trends in our jewellery catalog</span>
+      </section>
+    </main>
+    <footer class=" page-footer">
+      <div class="page-footer__container">
+        <div class="page-footer__section subscribe">
+          <h2>The good stuff in your inbox</h2>
+          <p>News and updates from CH. No spam, we promise.</p>
+          <form class="page-footer__subscribe form" method="post" action="#">
+            <label class="visually-hidden" for="email-subscribe">Your E-mail</label>
+            <input type="email" name="email" id="email-subscribe" placeholder="Your E-mail">
+            <button type="submit" class="subscribe__submit">
+              <span>Sign Up</span>
+              <svg width="30" height="11" viewBox="0 0 30 11" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#arrow"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <nav class="page-footer__navigation">
+          <ul class="page-footer__list">
+            <li>
+              <a href="#">Ordering & Payment</a>
+            </li>
+            <li>
+              <a href="#">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="#">Returns & Exchanges</a>
+            </li>
+            <li>
+              <a href="#">Delivery</a>
+            </li>
+          </ul>
+          <ul class="page-footer__list">
+            <li>
+              <a href="#">About CH</a>
+            </li>
 
-</body>
+            <li>
+              <a href="#">Stores & Hours</a>
+            </li>
 
-</html>
+            <li>
+              <a href="#">Jobs</a>
+            </li>
+
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+          </ul>
+          
+        </nav>
+        <ul class="page-footer__list social">
+          <li class="social__item social__item--facebook">
+            <a href="#">
+              <svg width="8" height="15" viewBox="0 0 8 15" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#facebook"></use>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li class="social__item social__item--instagram">
+            <a href="#">
+              <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#instagram"></use>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li class="social__item social__item--pinterest">
+            <a href="#">
+              <svg width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#pinterest"></use>
+              </svg>
+              <span>Pinterest</span>
+            </a>
+          </li>
+          <li class="social__item social__item--twitter">
+            <a href="#">
+              <svg width="15" height="13" viewBox="0 0 15 13" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="img/sprite_auto.svg#twitter"></use>
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <template id="pagination">
+      <li>
+        <button type="button" class="pagination__item"></button>
+      </li>
+    </template>
+    <template id="login">
+      <section class="modal">
+        <h2>Log In</h2>
+        <button class="modal__close" type="button" aria-label="close modal"></button>
+        <form class="modal__form form form--black">
+        <div class="modal__input-block">
+            <label class="visually-hidden" for="email-login">Your E-mail</label>
+            <input type="email" name="email-login" id="email-login" placeholder="Your E-mail" required="">
+        </div>
+          <div class="modal__input-block">
+            <label class="visually-hidden" for="password">Password</label>
+            <input name="password" id="password" placeholder="Password" required="">
+            <a href="#">Forgot your password?</a>
+          </div>
+          <button class="modal__submit" type="submit">Log In</button>
+          <div class="modal__footer"><span>Don’t have an account?</span><a href="#">Sign up</a></div>
+        </form>
+      </section>
+    </template>
+    <script src="js/main.js"></script>
+  </body>
+
+  </html>
