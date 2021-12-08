@@ -1,6 +1,15 @@
 .range-control {
   position: relative;
-  padding-bottom: 20px;
+  height: 53px;
+
+  @media (max-width: $tablet-max-width) {
+    padding-top: 9px;
+    height: 69px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    padding-top: 11px;
+  }
 }
 
 .range-control__scale {
@@ -8,6 +17,16 @@
   width: 80.6%;
   height: 1px;
   background-color: $beige;
+
+  @media (max-width: $tablet-max-width) {
+    margin: 0 0 0 31px;
+    width: 70.8%;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    width: 92.6%;
+    margin-left: 10px;
+  }
 }
 
 .range-control__bar {
@@ -15,6 +34,15 @@
   width: 45%;
   height: 1px;
   background-color: $brown;
+
+  @media (max-width: $tablet-max-width) {
+    margin-left: 21%;
+    width: 52%;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    width: 44%;
+  }
 }
 
 .range-control__toggle {
@@ -24,6 +52,14 @@
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: $tablet-max-width) {
+    top: 0;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    top: 3px;
+  }
+
   &::before {
     content: "";
     margin-bottom: 4px;
@@ -31,17 +67,38 @@
     height: 15px;
     background-color: $brown;
     border-radius: 50%;
+
+    @media (max-width: $tablet-max-width) {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &--min {
     left: 25%;
+
+    @media (max-width: $tablet-max-width) {
+      left: 17%;
+    }
   }
 
   &--max {
     left: 66%;
+
+    @media (max-width: $tablet-max-width) {
+      left: 57%;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      left: 67%;
+    }
   }
 
   span {
     font-size: 14px;
+
+    @media (max-width: $mobile-max-width) {
+      font-size: 16px;
+    }
   }
 }

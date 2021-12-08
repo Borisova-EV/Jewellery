@@ -22,3 +22,18 @@ $desktop-min-width: 1024px;
 @mixin poppins {
   font-family: "Poppins", "Nimbus Sans L", "Helvetica", "Arial", sans-serif;
 }
+
+@mixin style-link {
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: $brown;
+  }
+
+  &:active {
+    color: inherit;
+    opacity: 0.5;
+  }
+}

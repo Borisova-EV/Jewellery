@@ -1,9 +1,9 @@
 'use strict';
 (function () {
-  const menu = document.querySelector('.main-navigation');
-  const menuButton = document.querySelector('.page-header__button-menu');
   const page = document.querySelector('.page-body');
   const header = page.querySelector('.page-header');
+  const menu = header.querySelector('.main-navigation');
+  const menuButton = header.querySelector('.page-header__button-menu');
   const search = header.querySelector('.search');
 
   function openCloseMenu() {
@@ -26,30 +26,28 @@
 
 (function () {
   const slider = document.querySelector('.slider');
-  const sliderCards = slider.querySelectorAll('li');
   const sliderButtonPrev = document.querySelector('.control--previous');
   const sliderButtonNext = document.querySelector('.control--next');
   const paginationBlock = document.querySelector('.pagination');
   const paginationList = paginationBlock.querySelector('ul');
-  const pages = document.getElementsByClassName('pagination__item');
+  const pages = paginationList.getElementsByClassName('pagination__item');
+  const currentPageElement = document.querySelector('.pagination__current-page');
+  const totalPagesElement = document.querySelector('.pagination__total-page');
 
   let smallDevice = window.matchMedia("(max-width: 1023px)");
+  let mobileDevice = window.matchMedia("(max-width: 767px)");
 
   let counter = 0;
-
-  const AMOUNT = slider.classList.contains('catalog__list') ? 12 : (smallDevice.matches) ? 2 : 4;
-
-  const amountPages = Math.floor(sliderCards.length / AMOUNT);
 
   function disableButton(button, value) {
     button.disabled = value;
   }
 
-  function changeStatusButton() {
+  function changeStatusButton(amount) {
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
       disableButton(sliderButtonNext, false);
-    } else if (counter > 0 && counter < (amountPages - 1)) {
+    } else if (counter > 0 && counter < (amount - 1)) {
       disableButton(sliderButtonNext, false);
       disableButton(sliderButtonPrev, false)
     } else {
@@ -62,32 +60,34 @@
     pages[counter].classList.add('pagination__item--current');
   }
 
-  function showCardSlider() {
-    sliderCards.forEach((elem) => elem.classList.add('card-product--hidden'));
-    for (let i = AMOUNT * counter; i < (AMOUNT * counter + AMOUNT); i++) {
-      sliderCards[i].classList.remove('card-product--hidden');
+  function showCardSlider(cards, number) {
+    cards.forEach((elem) => elem.classList.add('card-product--hidden'));
+    const amountShowCards = ((cards.length - number * counter) < number) ? cards.length - number : number;
+    for (let i = number * counter; i < (number * counter + amountShowCards); i++) {
+      cards[i].classList.remove('card-product--hidden');
     }
   }
-  const onSliderButtonPrevClick = function () {
+
+  function showPreviousSliderCards(amount, cards) {
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
     } else {
       counter--;
-      showCardSlider()
+      showCardSlider(cards)
 
       const previousIndex = counter + 1;
       changeCurrentPage(previousIndex);
 
-      if (counter < (amountPages - 1)) {
+      if (counter < (amount - 1)) {
         disableButton(sliderButtonNext, false);
         disableButton(sliderButtonPrev, false);
       }
     }
   }
 
-  const onSliderButtonNextClick = function () {
+  function showNextSliderCards(amount, cards, number) {
     counter++;
-    showCardSlider()
+    showCardSlider(cards, number)
     if (counter > 0) {
       disableButton(sliderButtonPrev, false);
     }
@@ -95,13 +95,13 @@
     const previousIndex = counter - 1;
     changeCurrentPage(previousIndex);
 
-    if (counter >= (amountPages - 1)) {
+    if (counter >= (amount - 1)) {
       disableButton(sliderButtonNext, true);
     }
   }
 
 
-  function shiftPage() {
+  function shiftPage(cards, number) {
     pages[0].classList.add('pagination__item--current');
     for (let page of pages) {
       page.addEventListener('click', function () {
@@ -110,92 +110,142 @@
         }
         this.classList.add('pagination__item--current');
         counter = this.textContent - 1;
-        sliderCards.forEach((elem) => elem.classList.add('card-product--hidden'));
-        showCardSlider()
+        cards.forEach((elem) => elem.classList.add('card-product--hidden'));
+        showCardSlider(cards, number)
         changeStatusButton();
       })
     }
   }
 
 
-  function createPagination() {
+  function createPagination(amount) {
     const paginationFragment = document.createDocumentFragment();
-    for (let i = 1; i <= amountPages; i++) {
+    for (let i = 1; i <= amount; i++) {
       const paginationTemplate = document.querySelector('#pagination').content.querySelector('li');
       const paginationElement = paginationTemplate.cloneNode(true);
       const buttonPage = paginationElement.querySelector('button');
       buttonPage.textContent = i;
       paginationFragment.append(paginationElement);
     }
+    paginationList.textContent = '';
     paginationList.append(paginationFragment);
   }
 
-  function scrollSlider() {
+  function swipeSlider(evt, cards, amount, number) {
+    document.addEventListener('touchstart', handleTouchStart, false);
+
+    function handleTouchStart(evt) {
+      let xDown = null;
+
+      function getTouches(evt) {
+        return evt.touches;
+      }
+
+      const firstTouch = getTouches(evt)[0];
+      xDown = firstTouch.clientX;
+
+      let xUp = evt.touches[0].clientX;
+
+      const xDiff = xDown - xUp;
+
+      if (Math.abs(xDiff)) {
+        if (xDiff > 0) {
+          if ((cards.length - counter * number) <= number) {
+            return;
+          } else {
+            showNextSliderCards(amount, cards)
+          }
+        } else {
+          if (counter === 0) {
+            return;
+          } else {
+            showPreviousSliderCards(amount, cards);
+          }
+        }
+      }
+
+      xDown = null;
+    }
+  }
+
+  function scrollSlider(cards, amount, number) {
+    slider.classList.remove('slider--nojs');
     sliderButtonPrev.classList.remove('control--nojs');
     sliderButtonNext.classList.remove('control--nojs');
-    showCardSlider()
+    showCardSlider(cards, number)
     pages[0].classList.add('pagination__item--current');
 
     if (counter == 0) {
       disableButton(sliderButtonPrev, true);
     }
 
-    if (sliderCards.length <= AMOUNT) {
+    if (cards.length <= number) {
       disableButton(sliderButtonPrev, true);
       disableButton(sliderButtonNext, true);
-    } else {
-      sliderButtonPrev.addEventListener('click', onSliderButtonPrevClick);
-      sliderButtonNext.addEventListener('click', onSliderButtonNextClick);
+    } else if (mobileDevice.matches) {
+      swipeSlider(cards, amount, number);
+      currentPageElement.textContent = counter + 1;
+      totalPagesElement.textContent = amount;
+    } else if (smallDevice.matches) {
+      swipeSlider(cards, amount, number);
+      sliderButtonPrev.addEventListener('click', () => showPreviousSliderCards(amount, cards));
+      sliderButtonNext.addEventListener('click', () => showNextSliderCards(amount, cards));
 
-      shiftPage()
+      shiftPage(cards, number);
+    } else {
+      sliderButtonPrev.addEventListener('click', () => showPreviousSliderCards(amount, cards));
+      sliderButtonNext.addEventListener('click', () => showNextSliderCards(amount, cards));
+
+      shiftPage(cards, number)
     }
   }
-  createPagination();
-  scrollSlider();
+
+  function controlSlider() {
+    const sliderCards = slider.querySelectorAll('li');
+    const numberSliderCards = slider.classList.contains('catalog__list') ? 12 : (smallDevice.matches) ? 2 : 4;
+    const amountPages = Math.ceil(sliderCards.length / numberSliderCards);
+    createPagination(amountPages);
+    scrollSlider(sliderCards, amountPages, numberSliderCards);
+  }
+
+  if (slider) {
+    controlSlider()
+
+    window.addEventListener('resize', () => controlSlider());
+  }
 })();
 
 (function () {
   const accordion = document.querySelector('.accordion');
-  const accordionTitles = accordion.querySelectorAll('.accordion__title');
-  const accordionContents = accordion.querySelectorAll('.accordion__content');
 
   const ACCORDION_HIDDEN_CLASS = 'accordion__content--hidden';
   const ACCORDION_CURRENT_TITLE_CLASS = 'accordion__title--current';
 
-  function closeAccordionContent() {
-    accordionContents.forEach(function (elem) {
+  function closeAccordionContent(content) {
+    content.forEach(function (elem) {
       elem.classList.add(ACCORDION_HIDDEN_CLASS);
     })
   }
 
-  function changeAccordionTitle(currentTitle) {
-    accordionTitles.forEach(function (title) {
-      if (title !== currentTitle) {
-        title.classList.remove(ACCORDION_CURRENT_TITLE_CLASS);
-      }
-    })
-  }
-
   function openAccordion() {
-    closeAccordionContent();
-    accordionTitles.forEach(function (title) {
-      title.addEventListener('click', function () {
-        console.log(this);
-        changeAccordionTitle(this);
-        this.classList.toggle(ACCORDION_CURRENT_TITLE_CLASS);
-        const content = this.nextElementSibling;
-        accordionContents.forEach(function (elem) {
-          if (elem === content) {
-            elem.classList.toggle(ACCORDION_HIDDEN_CLASS);
-          } else {
-            elem.classList.add(ACCORDION_HIDDEN_CLASS);
-          }
+    if (accordion) {
+      const accordionTitles = accordion.querySelectorAll('.accordion__title');
+      const accordionContents = accordion.querySelectorAll('.accordion__content');
+
+      closeAccordionContent(accordionContents);
+      accordionTitles.forEach(function (title) {
+        title.addEventListener('click', function () {
+          this.classList.toggle(ACCORDION_CURRENT_TITLE_CLASS);
+          const content = this.nextElementSibling;
+          accordionContents.forEach(function (elem) {
+            if (elem === content) {
+              elem.classList.toggle(ACCORDION_HIDDEN_CLASS);
+            }
+          })
         })
       })
-    })
+    }
   }
-  console.log(accordion);
-  console.log(accordionTitles);
 
   openAccordion();
 })();
@@ -207,7 +257,9 @@
   const loginModal = loginTemplate.cloneNode(true);
   const closeLoginModalButton = loginModal.querySelector('.modal__close');
   const emailInput = loginModal.querySelector('input[type=email]');
-  const catalog = document.querySelector('.page-main--catalog');
+  const filterButton = document.querySelector('.filter__button');
+  const filterForm = document.querySelector('.filter__form');
+  const filter = document.querySelector('.filter');
 
   const CLASS_PAGE_OPENED_POPUP = 'page-body--opened-modal';
 
@@ -217,24 +269,22 @@
     page.removeChild(loginModal);
     page.classList.remove(CLASS_PAGE_OPENED_POPUP);
 
-    document.removeEventListener('keydown', onDocumentKeydown);
-    document.removeEventListener('click', onDocumentClick);
     closeLoginModalButton.removeEventListener('click', onCloseLoginModalButtonClick);
   }
 
-  const onDocumentKeydown = function (evt) {
+  function closeModalEsc(evt, closeFunction) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
       evt.preventDefault();
-      closeLoginModal();
+      closeFunction();
     }
   };
 
-  const onDocumentClick = function (evt) {
-    loginButtons.forEach(function (button) {
-      if (evt.target !== loginModal && !evt.target.classList.contains('login') && !loginModal.contains(evt.target)) {
-        closeLoginModal();
-      }
-    })
+  const isTargetModal = (evt, modal, classModal) => evt.target !== modal && !evt.target.classList.contains(classModal) && !modal.contains(evt.target);
+
+  function closeModalDocumentClick(evt, closeFunction, modal, classModal) {
+    if (isTargetModal(evt, modal, classModal)) {
+      closeFunction();
+    }
   };
 
   const onCloseLoginModalButtonClick = function () {
@@ -264,7 +314,6 @@
 
   function openLoginModal() {
     loginButtons.forEach(function (button) {
-      console.log(login)
       button.addEventListener('click', function (evt) {
         evt.preventDefault();
         page.prepend(loginModal);
@@ -273,8 +322,8 @@
         emailInput.focus();
         trapFocus(loginModal)
 
-        document.addEventListener('keydown', onDocumentKeydown);
-        document.addEventListener('click', onDocumentClick);
+        document.addEventListener('keydown', (evt) => closeModalEsc(evt, closeLoginModal));
+        document.addEventListener('click', (evt) => closeModalDocumentClick(evt, closeLoginModal, loginModal, 'login'));
         closeLoginModalButton.addEventListener('click', onCloseLoginModalButtonClick);
       })
     })
@@ -283,17 +332,18 @@
   openLoginModal();
 
   function openFilter() {
-    if (catalog) {
-      const filterButton = catalog.querySelector('.filter__button');
-      const filterForm = catalog.querySelector('.filter__form');
+    if (filterForm) {
       const filterCloseButton = filterForm.querySelector('.filter__close');
       const inputFilter = filterForm.querySelector('input');
-      console.log(inputFilter);
       const closeFilter = () => filterForm.classList.add('filter__form--hidden');
+      filter.classList.remove('filter--nojs');
       filterButton.addEventListener('click', function () {
         filterForm.classList.remove('filter__form--hidden');
         inputFilter.focus();
         trapFocus(filterForm);
+
+        document.addEventListener('keydown', (evt) => closeModalEsc(evt, closeFilter));
+        document.addEventListener('click', (evt) => closeModalDocumentClick(evt, closeFilter, filterForm, 'filter__button'));
         filterCloseButton.addEventListener('click', closeFilter);
       })
     }

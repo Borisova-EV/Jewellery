@@ -6,19 +6,23 @@
     font-size: 18px;
   }
 
+  @media (max-width: $mobile-max-width) {
+    font-size: 16px;
+  }
+
   fieldset {
     margin: 0;
-    padding: 0 0 29px 0;
+    padding: 0;
     border-top: none;
     border-left: none;
     border-right: none;
 
     @media (max-width: $tablet-max-width) {
-      padding-bottom: 38px;
+      padding-bottom: 11px;
     }
 
     @media (max-width: $mobile-max-width) {
-      padding-bottom: 26px;
+      padding-bottom: 0;
     }
 
     &:last-child {
@@ -29,7 +33,8 @@
   legend {
     padding: 21px 25px 0;
     width: 100%;
-    height: 68px;
+    height: 67px;
+    border: none;
 
     @media (max-width: $tablet-max-width) {
       margin-bottom: 10px;
@@ -42,16 +47,20 @@
     @media (max-width: $mobile-max-width) {
       padding-top: 23px;
       margin-bottom: 2px;
+      height: 69px;
+      font-size: 18px;
     }
   }
 
   svg {
-    top: 27px;
     right: 24px;
 
     @media (max-width: $tablet-max-width) {
-      top: 36px;
       right: 41px;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      right: 17px;
     }
   }
 }
@@ -59,9 +68,11 @@
 .filter__checkbox-container {
   margin: 0;
   padding-left: 34px;
+  padding-bottom: 26px;
   font-size: 14px;
 
   @media (max-width: $tablet-max-width) {
+    padding-left: 30px;
     font-size: 16px;
   }
 
@@ -124,13 +135,22 @@
   margin-bottom: 33px;
 
   @media (max-width: $tablet-max-width) {
+    margin-bottom: 39px;
     border-style: none;
     border-bottom: 1px solid $brown;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 33px;
   }
 }
 
 .filter__submit {
   margin-bottom: 27px;
+
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 21px;
+  }
 }
 
 .filter__button {
@@ -215,6 +235,10 @@
 .filter__button-container {
   @media (max-width: $tablet-max-width) {
     padding-left: 21px;
-    padding-right: 21px;
+    padding-right: 41px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    padding-right: 18px;
   }
 }

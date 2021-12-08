@@ -3,20 +3,27 @@
 
   &--catalog {
     position: relative;
+    margin-bottom: 24px;
+
+    @media (max-width: $tablet-max-width) {
+      margin-bottom: 94px;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      margin-bottom: 56px;
+
+      &::after {
+        display: none;
+      }
+    }
 
     &::after {
       content: "";
       position: absolute;
-      bottom: 132px;
+      bottom: 109px;
       width: 100%;
       height: 1px;
       background-color: $light-grey;
-    }
-
-    @media (max-width: $mobile-max-width) {
-      &::after {
-        display: none;
-      }
     }
   }
 }
@@ -79,16 +86,16 @@
     margin-bottom: 108px;
 
     @media (max-width: $tablet-max-width) {
-      margin-bottom: 72px;
+      margin-bottom: 78px;
     }
 
     @media (max-width: $mobile-max-width) {
-      margin-bottom: 55px;
+      margin-bottom: 58px;
     }
   }
 
   &--gallery {
-    margin-bottom: 131px;
+    margin-bottom: 134px;
 
     @media (max-width: $tablet-max-width) {
       margin-bottom: 80px;
@@ -101,7 +108,7 @@
 
   &--grid {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 21.4% 1fr;
     column-gap: 50px;
     margin-bottom: 74px;
 

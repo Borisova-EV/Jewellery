@@ -8,16 +8,9 @@
   line-height: 130%;
   border-bottom: 1px solid $brown;
 
-  &:visited {
-    color: inherit;
-  }
+  @include style-link;
 
-  &:hover {
-    color: $brown;
-  }
-
-  &:active {
+  &:link {
     color: inherit;
-    opacity: 0.5;
   }
 }

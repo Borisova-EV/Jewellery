@@ -20,9 +20,17 @@
     padding-top: 13px;
   }
 
-  &--opened-menu {
+  &--opened-menu,
+  &--nojs {
     @media (max-width: $tablet-max-width) {
       background-color: $brown;
+    }
+  }
+
+  &--nojs {
+    @media (max-width: $tablet-max-width) {
+      margin-bottom: 0;
+      padding-bottom: 14px;
     }
   }
 

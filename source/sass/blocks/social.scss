@@ -1,6 +1,7 @@
 .social {
   @media (max-width: $mobile-max-width) {
     display: flex;
+    flex-wrap: wrap;
   }
 
   svg {

@@ -9,14 +9,7 @@
   color: $white;
   cursor: pointer;
 
-  &:hover {
-    color: $brown;
-  }
-
-  &:active {
-    color: inherit;
-    opacity: 0.5;
-  }
+  @include style-link;
 
   span {
     margin-right: 7px;

@@ -39,14 +39,7 @@
   background-color: transparent;
   cursor: pointer;
 
-  &:hover {
-    color: $brown;
-  }
-
-  &:active {
-    border-style: none;
-    opacity: 0.5;
-  }
+  @include style-link;
 
   &--current {
     color: inherit;

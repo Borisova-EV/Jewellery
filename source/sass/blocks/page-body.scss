@@ -24,7 +24,8 @@
     }
   }
 
-  h2 {
+  h2,
+  h1 {
     @include cormorant;
     font-size: 34px;
     letter-spacing: 0.03em;

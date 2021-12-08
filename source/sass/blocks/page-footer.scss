@@ -13,7 +13,7 @@
     letter-spacing: 0.03em;
 
     @media (max-width: $mobile-max-width) {
-      margin-bottom: 16px;
+      margin-bottom: 11px;
       width: 73%;
     }
   }
@@ -32,14 +32,7 @@
   a {
     color: inherit;
 
-    &:hover {
-      color: $brown;
-    }
-
-    &:active {
-      color: inherit;
-      opacity: 0.5;
-    }
+    @include style-link;
   }
 }
 
@@ -58,7 +51,7 @@
   @media (max-width: $tablet-max-width) {
     grid-template-columns: 1fr max-content;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 37px;
     padding-right: 150px;
     padding-left: 45px;
   }
@@ -67,7 +60,7 @@
     display: block;
     padding-right: 15px;
     padding-left: 15px;
-    padding-bottom: 35px;
+    padding-bottom: 37px;
   }
 }
 

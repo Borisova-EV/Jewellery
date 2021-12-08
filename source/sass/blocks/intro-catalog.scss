@@ -3,8 +3,9 @@
   min-height: 261px;
   text-align: center;
   background-image: url("../img/intro/intro-catalog-desktop.jpg");
+  background-color: $brown;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 
   @include cormorant;
   color: $white;
@@ -38,12 +39,7 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
 
-    @media (max-width: $tablet-max-width) {
-      padding-right: 17px;
-    }
-
     @media (max-width: $mobile-max-width) {
-      padding-right: 0;
       padding-top: 10px;
     }
   }
@@ -55,13 +51,8 @@
     font-style: italic;
     text-align: center;
 
-    @media (max-width: $tablet-max-width) {
-      padding-right: 17px;
-    }
-
     @media (max-width: $mobile-max-width) {
       margin: 0 auto;
-      padding-right: 0;
       width: 80%;
     }
   }
