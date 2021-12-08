@@ -15,6 +15,11 @@
       display: block;
       width: 100%;
     }
+
+    @media (max-width: $mobile-max-width) {
+      width: max-content;
+      margin: 0 auto;
+    }
   }
 
   li {

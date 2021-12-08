@@ -67,20 +67,30 @@
 }
 
 .new__catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
   margin-bottom: 52px;
   padding-left: 0;
 
   @media (max-width: $tablet-max-width) {
+    grid-template-columns: repeat(2, 1fr);
     margin: 0 auto 42px;
+    width: 678px;
   }
 
   @media (max-width: $mobile-max-width) {
     margin-bottom: 32px;
+    width: 290px;
   }
 }
 
-.new__pagination-list {
+.new__pagination {
   margin: 0 auto;
-  padding-left: 0;
   width: max-content;
+
+  ul {
+    padding-left: 0;
+  }
 }

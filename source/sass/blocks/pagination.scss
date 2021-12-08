@@ -12,6 +12,14 @@
     }
   }
 
+  &--catalog {
+    ul {
+      @media (max-width: $mobile-max-width) {
+        display: flex;
+      }
+    }
+  }
+
   p {
     display: none;
 

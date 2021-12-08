@@ -1,5 +1,24 @@
 .page-main {
   width: 100%;
+
+  &--catalog {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 132px;
+      width: 100%;
+      height: 1px;
+      background-color: $light-grey;
+    }
+
+    @media (max-width: $mobile-max-width) {
+      &::after {
+        display: none;
+      }
+    }
+  }
 }
 
 .page-main__section-full {
@@ -80,6 +99,18 @@
     }
   }
 
+  &--grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 50px;
+    margin-bottom: 74px;
+
+    @media (max-width: $tablet-max-width) {
+      display: block;
+      margin-bottom: 73px;
+    }
+  }
+
   h2 {
     text-align: center;
   }
@@ -87,4 +118,26 @@
 
 .page-main__container {
   position: relative;
+}
+
+.page-main__section-catalog {
+  margin-bottom: 80px;
+
+  @media (max-width: $tablet-max-width) {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 40px;
+  }
+}
+
+.page-main__column-left {
+  @media (max-width: $tablet-max-width) {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 40px;
+  }
 }

@@ -25,7 +25,7 @@
 })();
 
 (function () {
-  const slider = document.querySelector('.slider__list');
+  const slider = document.querySelector('.slider');
   const sliderCards = slider.querySelectorAll('li');
   const sliderButtonPrev = document.querySelector('.control--previous');
   const sliderButtonNext = document.querySelector('.control--next');
@@ -37,7 +37,7 @@
 
   let counter = 0;
 
-  const AMOUNT = smallDevice.matches ? 2 : 4;
+  const AMOUNT = slider.classList.contains('catalog__list') ? 12 : (smallDevice.matches) ? 2 : 4;
 
   const amountPages = Math.floor(sliderCards.length / AMOUNT);
 
@@ -194,6 +194,8 @@
       })
     })
   }
+  console.log(accordion);
+  console.log(accordionTitles);
 
   openAccordion();
 })();
@@ -204,12 +206,12 @@
   const loginTemplate = document.querySelector('#login').content.querySelector('.modal');
   const loginModal = loginTemplate.cloneNode(true);
   const closeLoginModalButton = loginModal.querySelector('.modal__close');
-  const focusableElements = loginModal.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-  const firstFocusableElement = focusableElements[0];
-  const lastFocusableElement = focusableElements[focusableElements.length - 1];
   const emailInput = loginModal.querySelector('input[type=email]');
+  const catalog = document.querySelector('.page-main--catalog');
 
   const CLASS_PAGE_OPENED_POPUP = 'page-body--opened-modal';
+
+  const focusableElements = (modal) => modal.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
 
   function closeLoginModal() {
     page.removeChild(loginModal);
@@ -229,7 +231,6 @@
 
   const onDocumentClick = function (evt) {
     loginButtons.forEach(function (button) {
-      console.log(evt.target !== button);
       if (evt.target !== loginModal && !evt.target.classList.contains('login') && !loginModal.contains(evt.target)) {
         closeLoginModal();
       }
@@ -240,8 +241,11 @@
     closeLoginModal();
   }
 
-  function trapFocus() {
-    loginModal.addEventListener('keydown', function (evt) {
+  function trapFocus(modal) {
+    const focusableElementsModal = focusableElements(modal);
+    const firstFocusableElement = focusableElementsModal[0];
+    const lastFocusableElement = focusableElementsModal[focusableElementsModal.length - 1];
+    modal.addEventListener('keydown', function (evt) {
       if (evt.key === 'Tab') {
         if (evt.shiftKey) {
           if (document.activeElement === firstFocusableElement) {
@@ -267,7 +271,7 @@
 
         page.classList.add('page-body--opened-modal');
         emailInput.focus();
-        trapFocus()
+        trapFocus(loginModal)
 
         document.addEventListener('keydown', onDocumentKeydown);
         document.addEventListener('click', onDocumentClick);
@@ -277,4 +281,23 @@
   }
 
   openLoginModal();
+
+  function openFilter() {
+    if (catalog) {
+      const filterButton = catalog.querySelector('.filter__button');
+      const filterForm = catalog.querySelector('.filter__form');
+      const filterCloseButton = filterForm.querySelector('.filter__close');
+      const inputFilter = filterForm.querySelector('input');
+      console.log(inputFilter);
+      const closeFilter = () => filterForm.classList.add('filter__form--hidden');
+      filterButton.addEventListener('click', function () {
+        filterForm.classList.remove('filter__form--hidden');
+        inputFilter.focus();
+        trapFocus(filterForm);
+        filterCloseButton.addEventListener('click', closeFilter);
+      })
+    }
+  }
+
+  openFilter();
 })()

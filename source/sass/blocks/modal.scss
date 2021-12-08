@@ -138,28 +138,10 @@
 .modal__submit {
   margin-top: 9px;
   margin-bottom: 15px;
-  width: 100%;
-  height: 68px;
   font-family: inherit;
-  font-size: 16px;
-  font-weight: 500;
-  color: $white;
-  background-color: $brown;
-  border-style: none;
-  cursor: pointer;
 
   @media (max-width: $mobile-max-width) {
     margin-top: 5px;
-  }
-
-  &:hover {
-    background-color: $beige;
-    border: 1px solid $brown;
-    color: $brown;
-  }
-
-  &:active {
-    opacity: 0.5;
   }
 }
 

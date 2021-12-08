@@ -1,0 +1,31 @@
+.button {
+  width: 100%;
+  height: 68px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $white;
+  background-color: $brown;
+  border-style: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $beige;
+    opacity: 1px solid $brown;
+    color: $brown;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &--transparent {
+    background-color: $white;
+    color: $black;
+    border: 1px solid $brown;
+
+    &:hover {
+      background-color: $brown;
+      color: $white;
+    }
+  }
+}

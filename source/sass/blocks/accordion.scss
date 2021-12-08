@@ -2,34 +2,25 @@
   @include poppins;
   color: $black;
   border: 1px solid $brown;
+}
 
-  li {
-    position: relative;
-    cursor: pointer;
+.accordion__item {
+  position: relative;
+  cursor: pointer;
 
-    &:hover {
-      background-color: rgba($black-rgb, 0.05);
-    }
+  &:hover {
+    background-color: $beige;
+  }
 
-    &:not(:last-child) {
-      border-bottom: 1px solid $brown;
-    }
+  &:not(:last-child) {
+    border-bottom: 1px solid $brown;
   }
 }
 
+
 .accordion__title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 140%;
-
-  @media (max-width: $mobile-max-width) {
-    font-size: 16px;
-  }
-
   svg {
     position: absolute;
-    top: 48px;
-    right: 50px;
     width: 17px;
     height: 10px;
     stroke: $brown;
@@ -38,11 +29,6 @@
     @media (max-width: $tablet-max-width) {
       width: 23px;
       height: 16px;
-    }
-
-    @media (max-width: $mobile-max-width) {
-      top: 20px;
-      right: 22px;
     }
   }
 

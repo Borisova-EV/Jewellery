@@ -1,0 +1,47 @@
+.range-control {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.range-control__scale {
+  margin: 0 auto;
+  width: 80.6%;
+  height: 1px;
+  background-color: $beige;
+}
+
+.range-control__bar {
+  margin-left: 30%;
+  width: 45%;
+  height: 1px;
+  background-color: $brown;
+}
+
+.range-control__toggle {
+  position: absolute;
+  top: -7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::before {
+    content: "";
+    margin-bottom: 4px;
+    width: 15px;
+    height: 15px;
+    background-color: $brown;
+    border-radius: 50%;
+  }
+
+  &--min {
+    left: 25%;
+  }
+
+  &--max {
+    left: 66%;
+  }
+
+  span {
+    font-size: 14px;
+  }
+}
