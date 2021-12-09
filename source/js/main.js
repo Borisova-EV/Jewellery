@@ -131,29 +131,33 @@
     paginationList.append(paginationFragment);
   }
 
-  function swipeSlider(evt, cards, amount, number) {
-    document.addEventListener('touchstart', handleTouchStart, false);
+  function swipeSlider(cards, amount, number) {
+    slider.addEventListener('touchstart', handleTouchStart, false);
 
     function handleTouchStart(evt) {
-      let xDown = null;
+      let startPoint = null;
+      let endPoint = null;
 
-      function getTouches(evt) {
-        return evt.touches;
+      function getTouchPoint(evt) {
+        return evt.changedTouches[0].clientX;
       }
 
-      const firstTouch = getTouches(evt)[0];
-      xDown = firstTouch.clientX;
+      startPoint = getTouchPoint(evt);
 
-      let xUp = evt.touches[0].clientX;
+      slider.addEventListener('touchend', handleTouchEnd, false);
+      function handleTouchEnd(evt) {
+        endPoint = getTouchPoint(evt);
 
-      const xDiff = xDown - xUp;
+        const differencePoint = startPoint - endPoint;
 
-      if (Math.abs(xDiff)) {
-        if (xDiff > 0) {
-          if ((cards.length - counter * number) <= number) {
-            return;
-          } else {
-            showNextSliderCards(amount, cards)
+        if (differencePoint != 0) {
+          if (differencePoint > 0) {
+            if ((cards.length - counter * number) <= number) {
+              return;
+            } else {
+              showNextSliderCards(amount, cards)
+            }
+
           }
         } else {
           if (counter === 0) {
@@ -163,10 +167,9 @@
           }
         }
       }
-
-      xDown = null;
     }
   }
+
 
   function scrollSlider(cards, amount, number) {
     slider.classList.remove('slider--nojs');
