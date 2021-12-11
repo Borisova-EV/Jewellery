@@ -335,7 +335,7 @@
         <button type="button" class="catalog__control catalog__control--previous control control--previous control--nojs">Previous</button>
         <button type="button" class="catalog__control catalog__control--next control control--next control--nojs">Next</button>
         <div class="pagination pagination--catalog catalog__pagination">
-          <ul>
+          <ul class="pagination__list">
           </ul>
         </div>
       </section>
@@ -348,7 +348,7 @@
         <p>News and updates from CH. No spam, we promise.</p>
         <form class="page-footer__subscribe form" method="post" action="#">
           <label class="visually-hidden" for="email-subscribe">Your E-mail</label>
-          <input type="email" name="email" id="email-subscribe" placeholder="Your E-mail">
+          <input type="email" name="email" id="email-subscribe" placeholder="Your E-mail" required="">
           <button type="submit" class="subscribe__submit">
             <span>Sign Up</span>
             <svg width="30" height="11" viewBox="0 0 30 11" xmlns="http://www.w3.org/2000/svg">
@@ -449,7 +449,7 @@
           <input name="password" id="password" placeholder="Password" required="">
           <a href="#">Forgot your password?</a>
         </div>
-        <button class="modal__submit" type="submit">Log In</button>
+        <button class="modal__submit button" type="submit">Log In</button>
         <div class="modal__footer"><span>Don’t have an account?</span><a href="#">Sign up</a></div>
       </form>
     </section>

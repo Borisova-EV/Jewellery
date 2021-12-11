@@ -1,22 +1,29 @@
 .modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
+  padding-bottom: 47px;
   width: 430px;
-  height: 586px;
+  height: max-content;
   background-color: $beige;
   z-index: 100;
+  overflow-y: auto;
 
   @media (max-width: $tablet-max-width) {
+    padding-bottom: 53px;
     width: 442px;
   }
 
   @media (max-width: $mobile-max-width) {
+    padding-bottom: 38px;
     width: 270px;
-    height: 470px;
+  }
+
+  &--hidden {
+    display: none;
   }
 
   &::before {
@@ -63,10 +70,12 @@
   position: absolute;
   top: 20px;
   right: 22px;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-style: none;
   background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
 
   @media (max-width: $tablet-max-width) {
     width: 20px;

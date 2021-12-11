@@ -31,6 +31,7 @@
   }
 
   legend {
+    position: relative;
     padding: 21px 25px 0;
     width: 100%;
     height: 67px;
@@ -54,6 +55,7 @@
 
   svg {
     right: 24px;
+    top: 30px;
 
     @media (max-width: $tablet-max-width) {
       right: 41px;
@@ -207,8 +209,8 @@
 
   @media (max-width: $tablet-max-width) {
     position: absolute;
-    top: 11px;
-    right: -16px;
+    top: 13px;
+    right: -13px;
     display: block;
     width: 32px;
     height: 32px;
