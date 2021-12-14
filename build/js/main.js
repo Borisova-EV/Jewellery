@@ -309,7 +309,7 @@
 
         if (Math.abs(differencePoint) > SENSITIVITY) {
           if (differencePoint > 0) {
-             if (isLastPages(cards, numberCards)) {
+            if (isLastPages(cards, numberCards)) {
               return;
             } else {
               showNextSliderCards(amountPages, cards, numberCards, pagination)
