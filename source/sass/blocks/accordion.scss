@@ -14,10 +14,7 @@
   &:not(:last-child) {
     border-bottom: 1px solid $brown;
   }
-}
 
-
-.accordion__title {
   svg {
     position: absolute;
     width: 17px;

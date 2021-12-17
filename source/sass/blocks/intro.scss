@@ -5,13 +5,16 @@
   background-image: url("../img/intro/intro-desktop.jpg");
   background-color: $brown;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 
   @include cormorant;
   color: $white;
 
-  @media (min-resolution: 2dppx) {
-    background-image: url("../img/intro/intro-desktop@2x.jpg");
+  @media (min-width: $desktop-min-width) {
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro-desktop@2x.jpg");
+    }
   }
 
   @media (max-width: $tablet-max-width) {

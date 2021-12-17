@@ -19,7 +19,11 @@
   }
 
   li {
-    padding-bottom: 41px;
+    padding-bottom: 40px;
+
+    @media (max-width: $tablet-max-width) {
+      padding-bottom: 42px;
+    }
 
     @media (max-width: $mobile-max-width) {
       padding-bottom: 20px;

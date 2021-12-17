@@ -1,5 +1,9 @@
 .card-product {
+  display: block;
+
   @include poppins;
+  height: max-content;
+  opacity: 0;
 
   @media (max-width: $mobile-max-width) {
     width: 130px;
@@ -9,21 +13,29 @@
     display: none;
   }
 
+  &--opacity {
+    opacity: 1;
+    transition: opacity 0.8s;
+  }
+
+  &--nojs {
+    opacity: 1;
+  }
+
   img {
     margin-bottom: 13px;
     width: 100%;
+    height: auto;
     object-fit: cover;
 
     @media (max-width: $tablet-max-width) {
       margin-bottom: 16px;
       width: 324px;
-      height: 340px;
     }
 
     @media (max-width: $mobile-max-width) {
       margin-bottom: 10px;
       width: 130px;
-      height: 136px;
     }
   }
 

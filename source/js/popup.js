@@ -9,6 +9,8 @@
   const filterForm = document.querySelector('.filter__form');
   const filter = document.querySelector('.filter');
 
+  let mobileDevice = window.matchMedia("(max-width: 767px)");
+
   const CLASS_PAGE_OPENED_POPUP = 'page-body--opened-modal';
   const CLASS_HIDDEN_LOGIN_POPUP = 'modal--hidden';
 
@@ -85,13 +87,30 @@
     if (filterForm) {
       const filterCloseButton = filterForm.querySelector('.filter__close');
       const inputFilter = filterForm.querySelector('input');
-      const closeFilter = () => filterForm.classList.add('filter__form--hidden');
+      const closeFilter = () => {
+        filterForm.classList.add('filter__form--hidden');
+        page.classList.remove(CLASS_PAGE_OPENED_POPUP);
+      }
+
       filter.classList.remove('filter--nojs');
       filterButton.addEventListener('click', function () {
         filterForm.classList.remove('filter__form--hidden');
         inputFilter.focus();
         trapFocus(filterForm);
+        if (mobileDevice.matches) {
+          page.classList.add(CLASS_PAGE_OPENED_POPUP);
+        } else {
+          page.classList.remove(CLASS_PAGE_OPENED_POPUP);
+        }
 
+        window.addEventListener('resize', function () {
+          if (mobileDevice.matches) {
+            page.classList.add(CLASS_PAGE_OPENED_POPUP);
+          } else {
+            page.classList.remove(CLASS_PAGE_OPENED_POPUP);
+          }
+
+        });
         document.addEventListener('keydown', (evt) => closeModalEsc(evt, closeFilter));
         document.addEventListener('click', (evt) => closeModalDocumentClick(evt, closeFilter, filterForm, 'filter__button'));
         filterCloseButton.addEventListener('click', closeFilter);

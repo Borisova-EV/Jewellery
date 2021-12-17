@@ -21,29 +21,29 @@
         </svg>
       </button>
       <form class="page-header__search search search--nojs" method="get" action="#">
-        <button type="submit" aria-label="site search" class="search__button">
+        <button type="submit" aria-label="site search" class="search__button" tabindex="2">
           <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
             <use xlink:href="img/sprite_auto.svg#search"></use>
           </svg>
         </button>
         <label class="visually-hidden" for="search">Type here to search</label>
-        <input type="text" id="search" name="search" placeholder="Type here to search">
+        <input type="text" id="search" name="search" placeholder="Type here to search" tabindex="1">
       </form>
-      <a class="page-header__logo logo">
+      <a class="page-header__logo logo logo--link">
         <svg width="66" height="66" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="img/sprite_auto.svg#logo"></use>
         </svg>
       </a>
       <ul class="page-header__user-menu">
-        <li class="page-header__login-top">
-          <a class="login" href="login.html">Login</a>
-        </li>
         <li class="page-header__cart">
           <a href="#">
             <svg width="20" height="18" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#cart"></use>
             </svg>
             <span>Cart</span> <span>0</span></a>
+        </li>
+        <li class="page-header__login-top">
+          <a class="login" href="login.html">Login</a>
         </li>
       </ul>
     </div>
@@ -184,7 +184,7 @@
         </div>
         <div class="modal__input-block">
           <label class="visually-hidden" for="password">Password</label>
-          <input name="password" id="password" placeholder="Password" required="">
+          <input type="password" name="password" id="password" placeholder="Password" required="">
           <a href="#">Forgot your password?</a>
         </div>
         <button class="modal__submit button" type="submit">Log In</button>

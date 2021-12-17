@@ -10,22 +10,10 @@
   let mobileDevice = window.matchMedia("(max-width: 767px)");
 
   let counter = 0;
-  const SENSITIVITY = 20;
+
 
   function disableButton(button, value) {
     button.disabled = value;
-  }
-
-  function changeStatusButton(amountPages) {
-    if (counter == 0) {
-      disableButton(sliderButtonPrev, true);
-      disableButton(sliderButtonNext, false);
-    } else if (counter > 0 && counter < (amountPages - 1)) {
-      disableButton(sliderButtonNext, false);
-      disableButton(sliderButtonPrev, false)
-    } else {
-      disableButton(sliderButtonNext, true);
-    }
   }
 
   function changeCurrentPage(index, pagination) {
@@ -41,53 +29,64 @@
     return cards.length - getNumberPreviousCards(numberCards);
   }
 
-  function isLastPages(cards, numberCards) {
-    return getNumberNextCards(cards, numberCards) <= numberCards;
+  function isLastPages(amountPages) {
+    return (counter + 1) == amountPages;
   }
 
-  function showCardSlider(cards, numberCards) {
-    cards.forEach((elem) => elem.classList.add('card-product--hidden'));
+  function isFirstPages() {
+    return counter === 0
+  }
 
-    const amountShowCards = (isLastPages(cards, numberCards)) ? getNumberNextCards(cards, numberCards) : numberCards;
+  function changeStatusButton(amountPages) {
+    if (isFirstPages()) {
+      disableButton(sliderButtonPrev, true);
+      disableButton(sliderButtonNext, false);
+    } else {
+      disableButton(sliderButtonPrev, false);
+      disableButton(sliderButtonNext, false);
+    } if (isLastPages(amountPages)) {
+      disableButton(sliderButtonNext, true);
+      disableButton(sliderButtonPrev, false);
+    }
+  }
+
+  function showCardSlider(cards, numberCards, amountPages) {
+    cards.forEach(function (elem) {
+      elem.classList.add('card-product--hidden');
+      elem.classList.remove('card-product--opacity');
+    });
+
+    const amountShowCards = (isLastPages(amountPages)) ? getNumberNextCards(cards, numberCards) : numberCards;
     for (let i = getNumberPreviousCards(numberCards); i < (getNumberPreviousCards(numberCards) + amountShowCards); i++) {
       cards[i].classList.remove('card-product--hidden');
+      function addOpacity() {
+        cards[i].classList.add('card-product--opacity');
+      }
+      setTimeout(() => addOpacity(), 100);
     }
   }
 
   function showPreviousSliderCards(amountPages, cards, numberCards, pagination) {
-    if (counter == 0) {
-      disableButton(sliderButtonPrev, true);
-    } else {
-      counter--;
-      showCardSlider(cards, numberCards)
+    counter--;
+    showCardSlider(cards, numberCards, amountPages)
 
-      const previousIndex = counter + 1;
-      changeCurrentPage(previousIndex, pagination);
+    const previousIndex = counter + 1;
+    changeCurrentPage(previousIndex, pagination);
 
-      if (counter < (amountPages - 1)) {
-        disableButton(sliderButtonNext, false);
-        disableButton(sliderButtonPrev, false);
-      }
-    }
+    changeStatusButton(amountPages);
   }
 
   function showNextSliderCards(amountPages, cards, numberCards, pagination) {
     counter++;
-    showCardSlider(cards, numberCards)
-    if (counter > 0) {
-      disableButton(sliderButtonPrev, false);
-    }
+    showCardSlider(cards, numberCards, amountPages)
 
     const previousIndex = counter - 1;
     changeCurrentPage(previousIndex, pagination);
-
-    if (counter >= (amountPages - 1)) {
-      disableButton(sliderButtonNext, true);
-    }
+    changeStatusButton(amountPages);
   }
 
 
-  function shiftPage(cards, numberCards, pagination) {
+  function shiftPage(cards, numberCards, pagination, amountPages) {
     if (paginationList) {
       pagination[0].classList.add('pagination__item--current');
       for (let page of pagination) {
@@ -97,9 +96,10 @@
           }
           this.classList.add('pagination__item--current');
           counter = this.textContent - 1;
-          cards.forEach((elem) => elem.classList.add('card-product--hidden'));
-          showCardSlider(cards, numberCards)
-          changeStatusButton();
+
+          showCardSlider(cards, numberCards, amountPages)
+
+          changeStatusButton(amountPages);
         })
       }
     }
@@ -126,54 +126,62 @@
 
   function swipeSlider(cards, amountPages, numberCards, pagination) {
     slider.addEventListener('touchstart', handleTouchStart, false);
+    slider.addEventListener('touchmove', handleTouchMove, false);
+
+    let startPoint = 0;
+    let endPoint = 0;
+    const SENSITIVITY = 20;
 
     function handleTouchStart(evt) {
-      let startPoint = null;
-      let endPoint = null;
+      const startTouch = evt.changedTouches[0];
+      startPoint = startTouch.clientX;
+    }
 
-      function getTouchPoint(evt) {
-        return evt.changedTouches[0].clientX;
+    function handleTouchMove(evt) {
+      if (!startPoint) {
+        return
       }
 
-      startPoint = getTouchPoint(evt);
+      endPoint = evt.changedTouches[0].clientX;
+      const differencePoint = startPoint - endPoint;
 
-      slider.addEventListener('touchend', handleTouchEnd, false);
-      function handleTouchEnd(evt) {
-        endPoint = getTouchPoint(evt);
-        const differencePoint = startPoint - endPoint;
+      if (Math.abs(differencePoint) > SENSITIVITY) {
 
-        if (Math.abs(differencePoint) > SENSITIVITY) {
-          if (differencePoint > 0) {
-            if (isLastPages(cards, numberCards)) {
-              return;
-            } else {
-              showNextSliderCards(amountPages, cards, numberCards, pagination)
-              currentPageElement.textContent = counter + 1;
-            }
+        if (differencePoint > 0) {
+
+          if (isLastPages(amountPages)) {
+            return;
           } else {
+            evt.preventDefault();
+            showNextSliderCards(amountPages, cards, numberCards, pagination)
+            currentPageElement.textContent = counter + 1;
 
-            if (counter === 0) {
-              return;
-            } else {
-              showPreviousSliderCards(amountPages, cards, numberCards, pagination);
-              currentPageElement.textContent = counter + 1;
-            }
+          }
+        } else if (differencePoint < 0) {
+
+          if (isFirstPages()) {
+            return;
+          } else {
+            evt.preventDefault();
+            showPreviousSliderCards(amountPages, cards, numberCards, pagination);
+            currentPageElement.textContent = counter + 1;
           }
         }
 
-        startPoint = null;
-        endPoint = null;
-
+        startPoint = 0;
+        endPoint = 0;
       }
     }
   }
 
 
+
   function scrollSlider(cards, amountPages, numberCards) {
     slider.classList.remove('slider--nojs');
+    cards.forEach((card) => card.classList.remove('card-product--nojs'));
     sliderButtonPrev.classList.remove('control--nojs');
     sliderButtonNext.classList.remove('control--nojs');
-    showCardSlider(cards, numberCards);
+    showCardSlider(cards, numberCards, amountPages);
 
     let pages;
     if (paginationList) {
@@ -181,10 +189,7 @@
       pages[0].classList.add('pagination__item--current');
     }
 
-
-    if (counter == 0) {
-      disableButton(sliderButtonPrev, true);
-    }
+    changeStatusButton(amountPages)
 
     if (cards.length <= numberCards) {
       disableButton(sliderButtonPrev, true);
@@ -195,15 +200,16 @@
       totalPagesElement.textContent = amountPages;
     } else if (smallDevice.matches) {
       swipeSlider(cards, amountPages, numberCards, pages);
+
       sliderButtonPrev.addEventListener('click', () => showPreviousSliderCards(amountPages, cards, numberCards, pages));
       sliderButtonNext.addEventListener('click', () => showNextSliderCards(amountPages, cards, numberCards, pages));
 
-      shiftPage(cards, numberCards, pages);
+      shiftPage(cards, numberCards, pages, amountPages);
     } else {
       sliderButtonPrev.addEventListener('click', () => showPreviousSliderCards(amountPages, cards, numberCards, pages));
       sliderButtonNext.addEventListener('click', () => showNextSliderCards(amountPages, cards, numberCards, pages));
 
-      shiftPage(cards, numberCards, pages)
+      shiftPage(cards, numberCards, pages, amountPages)
     }
   }
 

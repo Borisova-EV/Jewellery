@@ -20,13 +20,13 @@
         </svg>
       </button>
       <form class="page-header__search search search--nojs" method="get" action="#">
-        <button type="submit" aria-label="site search" class="search__button">
+        <button type="submit" aria-label="site search" class="search__button" tabindex="2">
           <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
             <use xlink:href="img/sprite_auto.svg#search"></use>
           </svg>
         </button>
         <label class="visually-hidden" for="search">Type here to search</label>
-        <input type="text" id="search" name="search" placeholder="Type here to search">
+        <input type="text" id="search" name="search" placeholder="Type here to search" tabindex="1">
       </form>
       <a class="page-header__logo logo">
         <svg width="66" height="66" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -34,15 +34,15 @@
         </svg>
       </a>
       <ul class="page-header__user-menu">
-        <li class="page-header__login-top">
-          <a class="login" href="login.html">Login</a>
-        </li>
         <li class="page-header__cart">
           <a href="#">
             <svg width="20" height="18" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#cart"></use>
             </svg>
             <span>Cart</span> <span>0</span></a>
+        </li>
+        <li class="page-header__login-top">
+          <a class="login" href="login.html">Login</a>
         </li>
       </ul>
     </div>
@@ -102,7 +102,7 @@
           </svg>
         </button>
         <ul class="new__catalog slider slider--nojs">
-          <li class="card-product">
+          <li class="card-product card-product--nojs">
             <a href="#">
               <picture>
                 <source type="image/webp" srcset="img/catalog/purple-gemstone-necklace.webp 1x,  img/catalog/purple-gemstone-necklace@2x.webp 2x">
@@ -113,7 +113,7 @@
               <p>$ 145</p>
             </a>
           </li>
-          <li class="card-product">
+          <li class="card-product card-product--nojs">
             <a href="#">
               <picture>
                 <source type="image/webp" srcset="img/catalog/layered-choker-necklace.webp 1x,  img/catalog/layered-choker-necklace@2x.webp 2x">
@@ -124,7 +124,7 @@
               <p>$ 115</p>
             </a>
           </li>
-          <li class="card-product">
+          <li class="card-product card-product--nojs">
             <a href="#">
               <picture>
                 <source type="image/webp" srcset="img/catalog/dainty-gold-necklace.webp 1x,  img/catalog/dainty-gold-necklace@2x.webp 2x">
@@ -135,7 +135,7 @@
               <p>$ 215</p>
             </a>
           </li>
-          <li class="card-product">
+          <li class="card-product card-product--nojs">
             <a href="#">
               <picture>
                 <source type="image/webp" srcset="img/catalog/galaxy-earrings.webp 1x,  img/catalog/galaxy-earrings@2x.webp 2x">
@@ -144,6 +144,94 @@
               </picture>
               <h3>Galaxy earrings</h3>
               <p>$ 95</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/double-pearl-earrings.webp 1x,  img/catalog/double-pearl-earrings@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="pearl earrings in the form of small balls" src="img/catalog/double-pearl-earrings.jpg" srcset="img/catalog/double-pearl-earrings.jpg 1x, img/catalog/double-pearl-earrings@2x.jpg 2x">
+              </picture>
+              <h3>Double pearl earrings</h3>
+              <p>$ 115</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/black-choker-gold-bead.webp 1x,  img/catalog/black-choker-gold-bead@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="black necklace with gold bead and gold clasp" src="img/catalog/black-choker-gold-bead.jpg" srcset="img/catalog/black-choker-gold-bead.jpg 1x, img/catalog/black-choker-gold-bead@2x.jpg 2x">
+              </picture>
+              <h3>Choker with gold bead</h3>
+              <p>$ 55</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/gold-layered-necklace.webp 1x,  img/catalog/gold-layered-necklace@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="multilayer gold chain with round and rectangular pendant" src="img/catalog/gold-layered-necklace.jpg" srcset="img/catalog/gold-layered-necklace.jpg 1x, img/catalog/gold-layered-necklace@2x.jpg 2x">
+              </picture>
+              <h3>Gold layered necklace</h3>
+              <p>$ 155</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/blue-gemstone-pendant.webp 1x,  img/catalog/blue-gemstone-pendant@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="silver chain pendant with blue elongated gemstone" src="img/catalog/blue-gemstone-pendant.jpg" srcset="img/catalog/blue-gemstone-pendant.jpg 1x, img/catalog/blue-gemstone-pendant@2x.jpg 2x">
+              </picture>
+              <h3>Blue gemstone pendant</h3>
+              <p>$ 105</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/boho-earrings.webp 1x,  img/catalog/boho-earrings@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="blue gemstone ball earrings" src="img/catalog/boho-earrings.jpg" srcset="img/catalog/boho-earrings.jpg 1x, img/catalog/boho-earrings@2x.jpg 2x">
+              </picture>
+              <h3>Boho earrings</h3>
+              <p>$ 75</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/bird-necklace.webp 1x,  img/catalog/bird-necklace@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="bird pendant gold chain" src="img/catalog/bird-necklace.jpg" srcset="img/catalog/bird-necklace.jpg 1x, img/catalog/bird-necklace@2x.jpg 2x">
+              </picture>
+              <h3>Gold bird necklace</h3>
+              <p>$ 135</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/black-leather-choker-necklace.webp 1x,  img/catalog/black-leather-choker-necklace@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="necklace made of black leather" src="img/catalog/black-leather-choker-necklace.jpg" srcset="img/catalog/black-leather-choker-necklace.jpg 1x, img/catalog/black-leather-choker-necklace@2x.jpg 2x">
+              </picture>
+              <h3>Black leather choker</h3>
+              <p>$ 85</p>
+            </a>
+          </li>
+          <li class="card-product card-product--nojs">
+            <a href="#">
+              <picture>
+                <source type="image/webp" srcset="img/catalog/purple-gemstone-necklace.webp 1x,  img/catalog/purple-gemstone-necklace@2x.webp 2x">
+                <!-- 1х: 270px; 2x: 540px -->
+                <img width="270" height="284" alt="necklace on a silver chain with amethyst" src="img/catalog/purple-gemstone-necklace.jpg" srcset="img/catalog/purple-gemstone-necklace.jpg 1x, img/catalog/purple-gemstone-necklace@2x.jpg 2x">
+              </picture>
+              <h3>Necklace with amethyst</h3>
+              <p>$ 145</p>
             </a>
           </li>
         </ul>
@@ -213,7 +301,7 @@
     <section class="page-main__section page-main__section--faq faq">
       <h2>Frequently asked questions</h2>
       <ul class="accordion">
-        <li class="accordion__item">
+        <li class="accordion__item" tabindex="0">
           <h3 class="accordion__title">What materials are the&nbsp;jewellery made of?
             <svg width="17" height="10" viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#accordion-arrow"></use>
@@ -223,7 +311,7 @@
             contains precious and
             semiprecious stones and crystals.</p>
         </li>
-        <li class="accordion__item">
+        <li class="accordion__item" tabindex="0">
           <h3 class="accordion__title">Which countries do&nbsp;you&nbsp;deliver to?
             <svg width="17" height="10" viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#accordion-arrow"></use>
@@ -231,7 +319,7 @@
           </h3>
           <p class="accordion__content">We deliver products all over the world.</p>
         </li>
-        <li class="accordion__item">
+        <li class="accordion__item" tabindex="0">
           <h3 class="accordion__title">What are the payment&nbsp;methods?
             <svg width="17" height="10" viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#accordion-arrow"></use>
@@ -239,7 +327,7 @@
           </h3>
           <p class="accordion__content">You can pay online on the website or to the courier upon delivery.</p>
         </li>
-        <li class="accordion__item">
+        <li class="accordion__item" tabindex="0">
           <h3 class="accordion__title">Can I return the jewellery&nbsp;if it didn’t fit me?
             <svg width="17" height="10" viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="img/sprite_auto.svg#accordion-arrow"></use>
@@ -410,7 +498,7 @@
         </div>
         <div class="modal__input-block">
           <label class="visually-hidden" for="password">Password</label>
-          <input name="password" id="password" placeholder="Password" required="">
+          <input type="password" name="password" id="password" placeholder="Password" required="">
           <a href="#">Forgot your password?</a>
         </div>
         <button class="modal__submit button" type="submit">Log In</button>
