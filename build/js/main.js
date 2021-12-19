@@ -4,6 +4,8 @@
   const ACCORDION_HIDDEN_CLASS = 'accordion__content--hidden';
   const ACCORDION_CURRENT_CLASS = 'accordion__item--current';
 
+  let focus;
+
   function closeAccordionContent(content) {
     content.forEach(function (elem) {
       elem.classList.add(ACCORDION_HIDDEN_CLASS);
@@ -27,19 +29,30 @@
         item.addEventListener('click', function () {
           showAccordionContent(item);
         })
-        item.addEventListener('focus', function () {
-          document.addEventListener('keydown', function (evt) {
-            if (evt.key === 'Enter') {
-              showAccordionContent(item);
-            }
-          })
-        })
       })
+      const onDocumentKeyDown = function (evt) {
+        if (evt.key === 'Enter') {
+          showAccordionContent(focus);
+        }
+      }
+      const onItemFocus = function (evt) {
+        focus = evt.target;
+        document.addEventListener('keydown', onDocumentKeyDown);
+      }
+      accordion.addEventListener('focusin', onItemFocus);
     }
   }
 
   openAccordion();
 })();
+
+
+
+
+
+
+
+
 
 'use strict';
 (function () {
@@ -316,6 +329,7 @@
     }
   }
 
+
   function swipeSlider(cards, amountPages, numberCards, pagination) {
     slider.addEventListener('touchstart', handleTouchStart, false);
     slider.addEventListener('touchmove', handleTouchMove, false);
@@ -346,7 +360,10 @@
           } else {
             evt.preventDefault();
             showNextSliderCards(amountPages, cards, numberCards, pagination)
-            currentPageElement.textContent = counter + 1;
+            if (currentPageElement) {
+              currentPageElement.textContent = counter + 1;
+            }
+
 
           }
         } else if (differencePoint < 0) {
@@ -356,7 +373,9 @@
           } else {
             evt.preventDefault();
             showPreviousSliderCards(amountPages, cards, numberCards, pagination);
-            currentPageElement.textContent = counter + 1;
+            if (currentPageElement) {
+              currentPageElement.textContent = counter + 1;
+            }
           }
         }
 
@@ -388,8 +407,10 @@
       disableButton(sliderButtonNext, true);
     } else if (mobileDevice.matches) {
       swipeSlider(cards, amountPages, numberCards, pages);
-      currentPageElement.textContent = counter + 1;
-      totalPagesElement.textContent = amountPages;
+      if (currentPageElement) {
+        currentPageElement.textContent = counter + 1;
+        totalPagesElement.textContent = amountPages;
+      }
     } else if (smallDevice.matches) {
       swipeSlider(cards, amountPages, numberCards, pages);
 

@@ -4,6 +4,8 @@
   const ACCORDION_HIDDEN_CLASS = 'accordion__content--hidden';
   const ACCORDION_CURRENT_CLASS = 'accordion__item--current';
 
+  let focus;
+
   function closeAccordionContent(content) {
     content.forEach(function (elem) {
       elem.classList.add(ACCORDION_HIDDEN_CLASS);
@@ -27,14 +29,17 @@
         item.addEventListener('click', function () {
           showAccordionContent(item);
         })
-        item.addEventListener('focus', function () {
-          document.addEventListener('keydown', function (evt) {
-            if (evt.key === 'Enter') {
-              showAccordionContent(item);
-            }
-          })
-        })
       })
+      const onDocumentKeyDown = function (evt) {
+        if (evt.key === 'Enter') {
+          showAccordionContent(focus);
+        }
+      }
+      const onItemFocus = function (evt) {
+        focus = evt.target;
+        document.addEventListener('keydown', onDocumentKeyDown);
+      }
+      accordion.addEventListener('focusin', onItemFocus);
     }
   }
 

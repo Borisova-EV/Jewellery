@@ -124,6 +124,7 @@
     }
   }
 
+
   function swipeSlider(cards, amountPages, numberCards, pagination) {
     slider.addEventListener('touchstart', handleTouchStart, false);
     slider.addEventListener('touchmove', handleTouchMove, false);
@@ -154,7 +155,10 @@
           } else {
             evt.preventDefault();
             showNextSliderCards(amountPages, cards, numberCards, pagination)
-            currentPageElement.textContent = counter + 1;
+            if (currentPageElement) {
+              currentPageElement.textContent = counter + 1;
+            }
+
 
           }
         } else if (differencePoint < 0) {
@@ -164,7 +168,9 @@
           } else {
             evt.preventDefault();
             showPreviousSliderCards(amountPages, cards, numberCards, pagination);
-            currentPageElement.textContent = counter + 1;
+            if (currentPageElement) {
+              currentPageElement.textContent = counter + 1;
+            }
           }
         }
 
@@ -196,8 +202,10 @@
       disableButton(sliderButtonNext, true);
     } else if (mobileDevice.matches) {
       swipeSlider(cards, amountPages, numberCards, pages);
-      currentPageElement.textContent = counter + 1;
-      totalPagesElement.textContent = amountPages;
+      if (currentPageElement) {
+        currentPageElement.textContent = counter + 1;
+        totalPagesElement.textContent = amountPages;
+      }
     } else if (smallDevice.matches) {
       swipeSlider(cards, amountPages, numberCards, pages);
 
